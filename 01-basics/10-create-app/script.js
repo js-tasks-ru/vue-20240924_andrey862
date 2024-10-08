@@ -4,11 +4,12 @@ const App = defineComponent({
   name: 'DateApp',
 
   setup() {
+    const localeName = navigator.language
     const options = {
       dateStyle: 'long',
     }
 
-    const dateFormatted = new Date().toLocaleDateString('ru-RU', options)
+    const dateFormatted = new Date().toLocaleDateString(localeName, options)
 
     return {
       dateFormatted,
