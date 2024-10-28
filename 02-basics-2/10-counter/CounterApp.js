@@ -4,13 +4,13 @@ export default defineComponent({
   name: 'CounterApp',
 
   setup() {
-    const minValue = 0;
-    const maxValue = 5;
+    const minValue = 0
+    const maxValue = 5
 
-    const counter = ref(0);
+    const counter = ref(0)
 
     const increaseCounter = () => {
-      if(counter.value >= maxValue) {
+      if (counter.value >= maxValue) {
         return
       }
 
@@ -18,7 +18,7 @@ export default defineComponent({
     }
 
     const decreaseCounter = () => {
-      if(counter.value <= minValue) {
+      if (counter.value <= minValue) {
         return
       }
 
@@ -30,7 +30,7 @@ export default defineComponent({
       minValue,
       maxValue,
       increaseCounter,
-      decreaseCounter
+      decreaseCounter,
     }
   },
 
