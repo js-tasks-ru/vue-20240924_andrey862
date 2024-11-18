@@ -15,6 +15,16 @@ export default defineComponent({
     },
   },
 
+  emits: ['setIndexDeleted'],
+
+  setup(_, context) {
+    const onDeleteItem = index => context.emit('setIndexDeleted', index)
+
+    return {
+      onDeleteItem,
+    }
+  },
+
   template: `
     <ul class="emails-list unstyled-list" aria-label="Emails">
       <EmailListItem
@@ -22,6 +32,7 @@ export default defineComponent({
         :key="email"
         :email="email"
         :marked="isMarked"
+        @deleteItem="onDeleteItem(index)"
       />
     </ul>
   `,
