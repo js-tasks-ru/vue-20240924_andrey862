@@ -20,26 +20,18 @@ export default defineComponent({
   },
 
   data() {
-    const getWeatherCardClassName = ({ dt, sunrise, sunset }) => {
-      const className = ['weather-card']
-
-      if (dt < sunrise || dt > sunset) {
-        className.push('weather-card--night')
-      }
-
-      return className.join(' ')
-    }
+    const checkUseThemeNight = ({ dt, sunrise, sunset }) => dt < sunrise || dt > sunset
 
     return {
-      getWeatherCardClassName,
+      checkUseThemeNight,
     }
   },
 
   template: `
-        <li :class="getWeatherCardClassName(item.current)">
-            <WeatherAlert v-if="item.alert" :alert="item.alert"></WeatherAlert>
-            <WeatherData :data="item"></WeatherData>
-            <WeatherDetails :data="item.current"></WeatherDetails>
-        </li>
-    `,
+    <li class="weather-card" :class="{'weather-card--night': checkUseThemeNight(item.current)}">
+      <WeatherAlert v-if="item.alert" :alert="item.alert"></WeatherAlert>
+      <WeatherData :data="item"></WeatherData>
+      <WeatherDetails :data="item.current"></WeatherDetails>
+    </li>
+  `,
 })

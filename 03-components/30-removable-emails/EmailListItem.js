@@ -17,8 +17,8 @@ export default defineComponent({
 
   emits: ['eleteItem'],
 
-  setup(_, context) {
-    const onClickDelete = () => context.emit('deleteItem')
+  setup(_, { emit }) {
+    const onClickDelete = () => emit('deleteItem')
 
     return {
       onClickDelete,
